@@ -8,13 +8,9 @@ app.use("/", useRouter);
 const server = require("http").createServer(app);
 const PORT = 7654;
 const start = async () => {
-  setInterval(() => {
-    scrapManager();
-  }, 60000);
   try {
     server.listen(PORT, () => console.log(`Server started on port ${PORT}`));
   } catch (e) {
-    console.log("Error on server launch: ", e);
   }
 };
 start();
