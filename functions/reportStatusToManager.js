@@ -4,7 +4,7 @@ const simpleToken = "RNR-project-token";
 
 const reportStatusToManager = async () => {
   await axios.get('http://3.252.90.40:8000')
-  
+
   // -- form ec2 info --
   const id = await (
     await axios.get(`http://169.254.169.254/latest/meta-data/instance-id`)
@@ -26,7 +26,7 @@ const reportStatusToManager = async () => {
     {
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + simpleToken,
+        Authorization: `Bearer ${simpleToken}`,
       },
     }
   );
