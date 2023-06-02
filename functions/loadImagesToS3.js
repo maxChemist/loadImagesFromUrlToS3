@@ -1,4 +1,5 @@
 const { writeS3 } = require("./writeS3");
+const axios = require("axios");
 
 const loadImagesToS3 = async (req, res) => {
 
