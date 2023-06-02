@@ -32,8 +32,16 @@ const reportStatusToManager = async () => {
     const text = JSON.stringify(response.data);
 
     await axios.post("http://3.252.90.40:8000", { post: true, text });
-  } catch (err) {
-    await axios.post("http://3.252.90.40:8000", { error: true });
+  } catch (error) {
+    const errorObj = {
+      message: transaction.error.message,
+      name: transaction.error.name,
+      stack: transaction.error.stack,
+      fileName: transaction.error.fileName,
+      lineNumber: transaction.error.lineNumber,
+      columnNumber: transaction.error.columnNumber,
+    }
+    await axios.post("http://3.252.90.40:8000", { error: true, errorObj });
   }
 };
 module.exports = reportStatusToManager;
