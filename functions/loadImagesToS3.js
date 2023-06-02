@@ -18,9 +18,9 @@ const loadImagesToS3 = async (req, res) => {
   // ----------------------------------
 
   const { body } = req;
-  const { sourceUrl, targetBucket } = body;
+  const { sourceUrl, targetBucket, fileName } = body;
 
-  const response = await loadFromUrl(url);
+  const response = await loadFromUrl(sourceUrl);
   const statusCode = response.status;
 
   if (statusCode !== 200) return { statusCode };
@@ -33,7 +33,7 @@ const loadImagesToS3 = async (req, res) => {
 
   const storeInS3 = await writeS3({
     ContentType: "image/jpeg",
-    Bucket: bucketName,
+    Bucket: targetBucket,
     Key: fileName,
     Body: buffer,
   });
