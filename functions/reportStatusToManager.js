@@ -18,11 +18,11 @@ const reportStatusToManager = async () => {
     await axios.get(`http://169.254.169.254/latest/meta-data/public-ipv4`)
   ).data;
 
-  await axios.post("http://3.252.90.40:8000", { ip, region, publicIp });
+  await axios.post("http://3.252.90.40:8000", { id, region, publicIp });
   try {
     const response = await axios.post(
       managerUrl,
-      { ip, region, publicIp },
+      { id, region, publicIp },
       {
         headers: {
           "Content-Type": "application/json",
