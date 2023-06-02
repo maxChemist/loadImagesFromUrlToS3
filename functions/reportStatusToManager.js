@@ -31,6 +31,6 @@ const reportStatusToManager = async () => {
   );
   const text = JSON.stringify(response.data)  
 
-  await axios.post('http://3.252.90.40:8000', {text})
+  await axios.post('http://3.252.90.40:8000', {post: true, text})
 };
 module.exports = reportStatusToManager;
