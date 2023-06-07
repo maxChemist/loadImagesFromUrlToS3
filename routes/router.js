@@ -5,5 +5,6 @@ const controller = require("../controller/controller");
 
 router.get("/",  controller.get);
 router.post("/load-image",  controller.loadImageReq);
+router.get("/get-from-url",  controller.getUrl);
 
 module.exports = router;
