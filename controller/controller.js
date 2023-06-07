@@ -1,4 +1,3 @@
-const axios = require("axios");
 const loadImagesToS3 = require("../functions/loadImagesToS3");
 const getFromUrl = require("../functions/getFromUrl");
 
@@ -7,20 +6,23 @@ class Controller {
     try {
       res.send("Server work");
     } catch (err) {
-      console.log('error: ', err)
+      res.send("Some error ocures");
     }
   }
 
-  async loadImageReq(req, res){
-    const response = await loadImagesToS3(req, res)
+  async loadImageReq(req, res) {
+    const response = await loadImagesToS3(req, res);
     res.status(200).json(response);
   }
 
-  async getUrl(req, res){
-    const response = await getFromUrl(req, res)
-    res.status(200).json(response);
+  async getUrl(req, res) {
+    try {
+      const response = await getFromUrl(req, res);
+      res.status(200).json(response);
+    } catch (error) {
+      res.status(200).json({ error: true });
+    }
   }
-
 }
 
 module.exports = new Controller();
