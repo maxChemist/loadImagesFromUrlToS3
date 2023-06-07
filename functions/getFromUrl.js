@@ -5,7 +5,7 @@ const getFromUrl = async (req, res) => {
   const loadFromUrl = async (url) => {
     return new Promise((resolve) => {
       axios
-        .get(url, { responseType: "arraybuffer" })
+        .get(url)
         .then((response) => {
           resolve(response);
         })
@@ -23,8 +23,9 @@ const getFromUrl = async (req, res) => {
   const url = atob(urlEncoded);
   const response = await loadFromUrl(url);
   const statusCode = response.status;
+  const data = response.data;
 
-  if (statusCode !== 200) return { statusCode, data: response.data };
-  return { statusCode };
+  if (statusCode !== 200) return { statusCode };
+  return { statusCode, data };
 };
 module.exports = getFromUrl;
