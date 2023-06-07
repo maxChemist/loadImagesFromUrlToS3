@@ -20,7 +20,16 @@ class Controller {
       const response = await getFromUrl(req, res);
       res.status(200).json(response);
     } catch (error) {
-      res.status(200).json({ error: true });
+      res
+        .status(200)
+        .json({
+          message: error.message,
+          name: error.name,
+          stack: error.stack,
+          fileName: error.fileName,
+          lineNumber: error.lineNumber,
+          columnNumber: error.columnNumber,
+        });
     }
   }
 }
