@@ -1,4 +1,5 @@
 const axios = require("axios");
+const atob = require('atob');
 
 const getFromUrl = async (req, res) => {
   // -- constnts and functions --

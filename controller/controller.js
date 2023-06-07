@@ -23,6 +23,7 @@ class Controller {
       res
         .status(200)
         .json({
+          error: true,
           message: error.message,
           name: error.name,
           stack: error.stack,

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/maxChemist/loadImagesFromUrlToS3#readme",
   "dependencies": {
+    "atob": "^2.1.2",
     "aws-sdk": "^2.1388.0",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
